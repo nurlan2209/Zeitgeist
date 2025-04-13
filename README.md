@@ -1,4 +1,4 @@
-Новостной портал
+# Новостной портал Zeitgeist
 Полнофункциональное веб-приложение для новостного сайта с бэкендом на Flask и фронтендом на React.
 Возможности
 
@@ -8,7 +8,7 @@
 Группировка новостей по коллекциям
 Аудионовости
 
-Структура проекта
+# Структура проекта
 project/
 ├── backend/          # Flask-сервер
 ├── frontend/         # React-приложение
@@ -25,7 +25,7 @@ Node.js 14+
 npm или yarn
 
 Установка и запуск
-Backend
+# Backend
 
 Перейдите в директорию backend:
 
@@ -39,7 +39,7 @@ bashpip install -r requirements.txt
 
 bashpython app.py
 Сервер будет доступен по адресу: http://localhost:5000
-Frontend
+# Frontend
 
 Перейдите в директорию frontend:
 
@@ -48,13 +48,13 @@ bashcd frontend
 Установите зависимости:
 
 bashnpm install
-# или
+или
 yarn install
 
 Запустите приложение:
 
 bashnpm start
-# или
+или
 yarn start
 Приложение будет доступно по адресу: http://localhost:3000
 API
