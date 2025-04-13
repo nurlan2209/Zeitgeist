@@ -1,0 +1,178 @@
+.featured-image-icon {
+  height: 755.5px;
+  width: 1.8px;
+  position: relative;
+  overflow: hidden;
+}
+.featured-image-placeholder {
+  width: 1010px;
+  height: 323px;
+  left: 2%;
+  position: relative;
+  border-radius: var(--br-8xs);
+  background-color: var(--color-gainsboro-200);
+}
+.israel-the1 {
+  margin: 0;
+  width: 309px;
+  height: 30px;
+  position: relative;
+  font-size: inherit;
+  line-height: 124.77%;
+  font-weight: 900;
+  font-family: inherit;
+  display: inline-block;
+  flex-shrink: 0;
+  z-index: 2;
+}
+.featured-image-placeholder{
+  background-size: contain;
+  /* Add a filter to make it grayscale by default */
+  filter: grayscale(100%);
+  /* Add a smooth transition */
+  transition: filter 0.3s ease;
+}
+.featured-image-placeholder:hover {
+  /* Remove the grayscale filter on hover to show the image in color */
+  filter: grayscale(0%);
+}
+.small-image-icon {
+  height: 2px;
+  width: 300px;
+  position: relative;
+}
+.theme-image {
+  width: 304px;
+  height: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 0px 0px var(--padding-9xs);
+  box-sizing: border-box;
+  z-index: 1;
+  margin-top: -3px;
+  position: relative;
+}
+.theme {
+  height: 30px;
+  width: 308px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.featured-description {
+  width: 462px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0px var(--padding-135xl) 0px 0px;
+  box-sizing: border-box;
+  z-index: 3;
+}
+.their-time-is1 {
+  margin: 0;
+  height: 75px;
+  width: 508px;
+  position: relative;
+  font-size: inherit;
+  line-height: 124.77%;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: inherit;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.featured-title {
+  width: 557px;
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0px var(--padding-31xl) 0px 0px;
+  box-sizing: border-box;
+  z-index: 4;
+  font-size: var(--font-size-41xl);
+  color: var(--color-black);
+  font-family: var(--font-itc-cushing-std);
+}
+.the-murder-of1 {
+  width: 617px;
+  margin-top: 10px;
+  position: relative;
+  font-size: var(--font-size-base);
+  line-height: 124.77%;
+  color: var(--color-black);
+  display: inline-block;
+  z-index: 2;
+}
+.by-liel-leibovitz1 {
+  height: 17px;
+  width: 127px;
+  position: relative;
+  line-height: 124.77%;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.featured-author {
+  width: 371px;
+  height: 17px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0px var(--padding-226xl) 0px 0px;
+  box-sizing: border-box;
+  z-index: 1;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-itc-cushing-std);
+}
+.featured-news-item {
+  margin-left: 200px;
+  height: 237px;
+  width: 797px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-mini);
+}
+.featured-details {
+  width: 655px;
+  height: 227px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 0px 0px var(--padding-19xl);
+  box-sizing: border-box;
+}
+.featured-content {
+  margin-left: 00px;
+  height: 559px;
+  width: 1600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-4xs);
+}
+.div4 {
+  width: 1600px;
+  height: 755.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-4xs);
+  text-align: center;
+  font-size: var(--font-size-5xl);
+  color: var(--color-gray-200);
+  font-family: var(--font-graebenbach);
+}

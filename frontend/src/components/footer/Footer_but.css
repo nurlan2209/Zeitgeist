@@ -1,0 +1,71 @@
+/* Footer_but.css */
+.footer-but {
+  width: 23px;
+  height: 21px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-6xs);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000; 
+  padding: 5px;
+  background: transparent;
+  position: relative;
+}
+
+/* Стили для всех линий */
+.footer-but-child,
+.footer-but-item {
+  position: absolute;
+  height: 3px;
+  background-color: #000;
+  transition: all 0.3s ease;
+  left: 0;
+}
+
+/* Стили для верхней и нижней линии */
+.footer-but-child {
+  width: 19px;
+}
+
+/* Позиционируем линии */
+.footer-but-child:first-child {
+  top: 0;
+}
+
+.footer-but-child:last-child {
+  bottom: 0;
+}
+
+/* Стили для средней линии */
+.footer-but-item {
+  width: 23px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Стиль при наведении */
+.footer-but:hover {
+  opacity: 0.8;
+}
+
+/* Стили для активного состояния - анимация первой линии */
+.footer-but.active .footer-but-child:first-child {
+  transform: translateY(9px) rotate(45deg);
+  width: 23px;
+  top: 0;
+}
+
+/* Стили для активного состояния - скрываем среднюю линию */
+.footer-but.active .footer-but-item {
+  opacity: 0;
+}
+
+/* Стили для активного состояния - анимация последней линии */
+.footer-but.active .footer-but-child:last-child {
+  transform: translateY(-9px) rotate(-45deg);
+  width: 23px;
+  bottom: 0;
+}

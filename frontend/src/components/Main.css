@@ -1,0 +1,169 @@
+.main-article-background {
+  width: 657px;
+  height: 100%;
+  position: absolute;
+  margin: 0 !important;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  max-height: 100%;
+  z-index: 0;
+}
+.main-article-image {
+  width: 636px;
+  height: 423px;
+  position: relative;
+  border-radius: var(--br-8xs);
+  background-color: var(--color-gainsboro-200);
+  z-index: 1;
+  background-size: contain;
+  /* Add a filter to make it grayscale by default */
+  filter: grayscale(100%);
+  /* Add a smooth transition */
+  transition: filter 0.3s ease;
+}
+
+.main-article-image:hover {
+  /* Remove the grayscale filter on hover to show the image in color */
+  filter: grayscale(0%);
+}
+.title-icon {
+  position: absolute;
+  top: 28px;
+  left: 4px;
+  width: 300px;
+  height: 2px;
+}
+.israel-the {
+  margin: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: inherit;
+  line-height: 124.77%;
+  font-weight: 900;
+  font-family: inherit;
+  display: inline-block;
+  width: 309px;
+  height: 30px;
+}
+.main-article-title {
+  height: 30px;
+  width: 308px;
+  position: relative;
+}
+.main-article-title-wrapper {
+  width: 462px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0px var(--padding-135xl) 0px 0px;
+  box-sizing: border-box;
+}
+.their-time-is {
+  margin: 0 !important;
+  height: max-content;
+  width: auto;
+  position: absolute;
+  top: -64px;
+  font-size: inherit;
+  line-height: 124.77%;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: inherit;
+  display: inline-block;
+  z-index: 0;
+}
+.the-murder-of {
+  width: 617px;
+  position: relative;
+  font-size: var(--font-size-base);
+  line-height: 124.77%;
+  font-family: var(--font-graebenbach);
+  display: inline-block;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.description-container {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 2;
+}
+.by-liel-leibovitz {
+  height: 17px;
+  width: 127px;
+  position: relative;
+  line-height: 124.77%;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.author-container {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  z-index: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-200);
+}
+.main-article-description {
+  width: 617px;
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-mini);
+  font-size: var(--font-size-41xl);
+  color: var(--color-black);
+  font-family: var(--font-itc-cushing-std);
+}
+.frame-group {
+  height: 206px;
+  width: 617px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-65xl);
+}
+.main-article-content {
+  width: 626px;
+  height: 206px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 0px 0px var(--padding-4xs);
+  box-sizing: border-box;
+  z-index: 2;
+}
+.main {
+  height: 795px;
+  width: 657.8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-11xs-5) 0px var(--padding-130xl-5);
+  box-sizing: border-box;
+  position: relative;
+  gap: var(--gap-mini);
+  z-index: 1;
+  text-align: center;
+  font-size: var(--font-size-5xl);
+  color: var(--color-gray-200);
+  font-family: var(--font-graebenbach);
+}

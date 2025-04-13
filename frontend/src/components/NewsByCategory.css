@@ -1,0 +1,122 @@
+.fnews-by-category-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .fnews-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+  }
+  
+  .fnews-category {
+    border-top: 3px solid #000;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .fcategory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .fcategory-title {
+    font-family: var(--font-graebenbach, serif);
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .fsee-all-link {
+    font-family: var(--font-graebenbach, sans-serif);
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .fsee-all-link:hover {
+    text-decoration: underline;
+  }
+  
+  .fcategory-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .farticle-item {
+    padding-bottom: 20px;
+    border-bottom: 1px dotted #ccc;
+  }
+  
+  .farticle-item:last-child {
+    border-bottom: none;
+  }
+  
+  .farticle-title {
+    font-family: var(--font-itc-cushing-std, serif);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.f3;
+  }
+  
+  .farticle-author {
+    font-family: var(--font-itc-cushing-std);
+    font-size: 12px;
+    color: #333;
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+  
+  .floading-news {
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+    font-family: var(--font-graebenbach, sans-serif);
+    font-size: 18px;
+  }
+  
+  /* For specialized category styling */
+  .fnews-category:has(.fcategory-title:contains("FOOD")) .fcategory-title {
+    font-family: "Courier New", monospace;
+    letter-spacing: 2px;
+  }
+  
+  @media (max-width: 768px) {
+    .fnews-categories-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .farticle-title {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+}
+
+.farticle-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-tomato);
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+    -moz-transition: width 0.3s ease;
+    -ms-transition: width 0.3s ease;
+    -o-transition: width 0.3s ease;
+}
+
+.farticle-title:hover::after {
+    width: 100%;
+}

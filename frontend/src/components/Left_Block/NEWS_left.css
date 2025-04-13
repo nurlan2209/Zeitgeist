@@ -1,0 +1,117 @@
+.news {
+  text-decoration: none;
+  width: 68px;
+  height: 24px;
+  position: relative;
+  line-height: var(--font-size-5xl);
+  font-weight: 900;
+  color: inherit;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.news-lines {
+  width: 71px;
+  position: relative;
+  border-top: 3px solid var(--color-tomato);
+  box-sizing: border-box;
+  height: 1px;
+}
+.news-content {
+  width: 70px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 0px var(--padding-12xs);
+  box-sizing: border-box;
+  gap: var(--gap-10xs);
+}
+.titels {
+  margin: 0;
+  width: 275px;
+  height: 38px;
+  position: relative;
+  font-size: var(--font-size-11xl);
+  line-height: 124.77%;
+  font-weight: 700;
+  font-family: var(--font-itc-cushing-std);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.news-item {
+  width: 178px;
+  height: 77px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-2xs);
+  z-index: 3;
+}
+.buy-new-car {
+  margin: 0;
+  margin-top: 40px;
+  height: 25px;
+  width: 287px;
+  position: relative;
+  font-size: inherit;
+  line-height: 124.77%;
+  font-weight: 400;
+  font-family: inherit;
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+.news-category {
+  width: 106px;
+  height: 53px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 0px var(--padding-9xl);
+  box-sizing: border-box;
+  z-index: 1;
+  font-size: var(--font-size-xl);
+  color: var(--color-dimgray);
+}
+.by-shayahmet-z {
+  width: 199px;
+  height: 17px;
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 124.77%;
+  display: inline-block;
+  font-family: var(--font-itc-cushing-std);
+  flex-shrink: 0;
+  z-index: 1;
+  margin-top: 95px;
+}
+.news-icon {
+  width: 317.5px;
+  height: 100%;
+  position: absolute;
+  margin: 0 !important;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  max-height: 100%;
+  z-index: 0;
+}
+.news-right {
+  width: 319.5px;
+  height: 285.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-4xs-5) 0px var(--padding-63xl);
+  box-sizing: border-box;
+  position: relative;
+  gap: var(--gap-5xl);
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: var(--color-gray-200);
+  font-family: var(--font-graebenbach);
+}
