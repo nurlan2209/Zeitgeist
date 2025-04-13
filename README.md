@@ -13,33 +13,29 @@
 
 Перейдите в директорию backend:
 
-bashcd backend
+''' cd backend '''
 
 Установите зависимости:
 
-bashpip install -r requirements.txt
+'''pip install -r requirements.txt'''
 
 Запустите сервер:
 
-bashpython app.py
+'''python app.py'''
 Сервер будет доступен по адресу: http://localhost:5000
 # Frontend
 
 Перейдите в директорию frontend:
 
-bashcd frontend
+'''cd frontend'''
 
 Установите зависимости:
 
-bashnpm install
-или
-yarn install
+'''npm install'''
 
 Запустите приложение:
 
-bashnpm start
-или
-yarn start
+'''npm start'''
 Приложение будет доступно по адресу: http://localhost:3000
 API
 Основные эндпоинты
