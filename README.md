@@ -8,23 +8,7 @@
 Группировка новостей по коллекциям
 Аудионовости
 
-# Структура проекта
-project/
-├── backend/          # Flask-сервер
-├── frontend/         # React-приложение
-Требования
-Backend
-
-Python 3.8+
-Flask
-SQLite
-
-Frontend
-
-Node.js 14+
-npm или yarn
-
-Установка и запуск
+# Установка и запуск
 # Backend
 
 Перейдите в директорию backend:
