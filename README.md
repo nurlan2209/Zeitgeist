@@ -13,29 +13,29 @@
 
 Перейдите в директорию backend:
 
-''' cd backend '''
+```cd backend```
 
 Установите зависимости:
 
-'''pip install -r requirements.txt'''
+pip install -r requirements.txt
 
 Запустите сервер:
 
-'''python app.py'''
+python app.py
 Сервер будет доступен по адресу: http://localhost:5000
 # Frontend
 
 Перейдите в директорию frontend:
 
-'''cd frontend'''
+cd frontend
 
 Установите зависимости:
 
-'''npm install'''
+npm install
 
 Запустите приложение:
 
-'''npm start'''
+npm start
 Приложение будет доступно по адресу: http://localhost:3000
 API
 Основные эндпоинты
