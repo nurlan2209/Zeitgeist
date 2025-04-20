@@ -1,167 +1,136 @@
-// AuthContext.jsx
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
-// URL API для аутентификации
-const AUTH_API_URL = 'http://localhost:5000/auth';
+export const AuthContext = createContext();
 
-// Создаем контекст
-const AuthContext = createContext();
-
-// Хук для использования контекста
-export const useAuth = () => useContext(AuthContext);
-
-// Провайдер контекста аутентификации
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false); // Состояние для статуса администратора
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  // Проверка текущего пользователя при загрузке
+  // Проверяем токен и статус администратора при загрузке приложения
   useEffect(() => {
-    const checkCurrentUser = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`${AUTH_API_URL}/current_user`, {
-          method: 'GET',
-          credentials: 'include',  // Важно для отправки cookies с сессией
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          if (data.id) {
-            setUser(data);
-          } else {
-            setUser(null);
-          }
-        } else {
-          setUser(null);
-        }
-      } catch (err) {
-        console.error('Ошибка при проверке пользователя:', err);
-        setUser(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    checkCurrentUser();
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      fetchCurrentUser(token);
+      checkAdminStatus(token);
+    }
   }, []);
 
-  // Функция для входа
-  const login = async (username, password) => {
+  const fetchCurrentUser = async (token) => {
     try {
-      setLoading(true);
-      setError(null);
-      
-      const response = await fetch(`${AUTH_API_URL}/login`, {
-        method: 'POST',
+      const response = await fetch('http://localhost:5000/auth/current_user', {
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-        credentials: 'include',  // Важно для сохранения cookies с сессией
+          'Authorization': `Bearer ${token}`
+        }
       });
-      
       const data = await response.json();
-      
+      if (response.ok) {
+        setUser(data);
+      } else {
+        localStorage.removeItem('authToken');
+        setUser(null);
+        setIsAdmin(false);
+      }
+    } catch (err) {
+      console.error('Ошибка получения текущего пользователя:', err);
+      localStorage.removeItem('authToken');
+      setUser(null);
+      setIsAdmin(false);
+    }
+  };
+
+  const checkAdminStatus = async (token) => {
+    try {
+      const response = await fetch('http://localhost:5000/auth/check_admin', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setIsAdmin(data.isAdmin); // Устанавливаем isAdmin как булево значение
+      } else {
+        setIsAdmin(false);
+      }
+    } catch (err) {
+      console.error('Ошибка проверки статуса администратора:', err);
+      setIsAdmin(false);
+    }
+  };
+
+  const login = async (username, password) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch('http://localhost:5000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await response.json();
       if (response.ok) {
         setUser(data.user);
-        return true;
+        localStorage.setItem('authToken', data.token);
+        await checkAdminStatus(data.token); // Проверяем статус администратора после входа
+        return data;
       } else {
-        setError(data.error || 'Ошибка при входе');
-        return false;
+        setError(data.error || 'Ошибка входа');
+        return null;
       }
     } catch (err) {
-      console.error('Ошибка при входе:', err);
-      setError('Ошибка соединения с сервером');
-      return false;
+      setError('Ошибка сервера');
+      return null;
     } finally {
       setLoading(false);
     }
   };
 
-  // Функция для регистрации
   const register = async (username, password, email) => {
+    setLoading(true);
+    setError(null);
     try {
-      setLoading(true);
-      setError(null);
-      
-      const response = await fetch(`${AUTH_API_URL}/register`, {
+      const response = await fetch('http://localhost:5000/auth/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          username, 
-          password,
-          email,
-          role: 'user' // Регистрируем всегда как обычного пользователя
-        }),
-        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, email })
       });
-      
       const data = await response.json();
-      
       if (response.ok) {
-        return true;
+        setUser(data.user);
+        localStorage.setItem('authToken', data.token);
+        await checkAdminStatus(data.token); // Проверяем статус администратора после регистрации
+        return data;
       } else {
-        setError(data.error || 'Ошибка при регистрации');
-        return false;
+        setError(data.error || 'Ошибка регистрации');
+        return null;
       }
     } catch (err) {
-      console.error('Ошибка при регистрации:', err);
-      setError('Ошибка соединения с сервером');
-      return false;
+      setError('Ошибка сервера');
+      return null;
     } finally {
       setLoading(false);
     }
   };
 
-  // Функция для выхода
   const logout = async () => {
     try {
-      setLoading(true);
-      
-      const response = await fetch(`${AUTH_API_URL}/logout`, {
-        method: 'POST',
-        credentials: 'include',
+      await fetch('http://localhost:5000/auth/logout', {
+        method: 'POST'
       });
-      
-      if (response.ok) {
-        setUser(null);
-        return true;
-      } else {
-        return false;
-      }
     } catch (err) {
-      console.error('Ошибка при выходе:', err);
-      return false;
-    } finally {
-      setLoading(false);
+      console.error('Ошибка выхода:', err);
     }
-  };
-
-  // Функция для проверки, является ли пользователь администратором
-  const isAdmin = () => {
-    return user && user.role === 'admin';
-  };
-
-  // Предоставляем данные и функции через контекст
-  const value = {
-    user,
-    loading,
-    error,
-    login,
-    register, // Добавляем функцию регистрации
-    logout,
-    isAdmin,
+    localStorage.removeItem('authToken');
+    setUser(null);
+    setIsAdmin(false);
   };
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ user, isAdmin, login, register, logout, error, loading }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export default AuthContext;
+export const useAuth = () => React.useContext(AuthContext);

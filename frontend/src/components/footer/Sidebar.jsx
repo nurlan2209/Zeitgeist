@@ -159,7 +159,7 @@ function Sidebar({ isOpen, onClose, children }) {
                   </div>
                   
                   {/* Ссылка на админ-панель (если пользователь админ) */}
-                  {isAdmin() && (
+                  {isAdmin && (
                     <Link 
                       to="/admin" 
                       onClick={onClose}

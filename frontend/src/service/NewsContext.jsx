@@ -21,7 +21,7 @@ export const NewsProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:5000/api/data');
+        const response = await fetch('http://127.0.0.1:5000/api/data');
         
         if (!response.ok) {
           throw new Error(`Ошибка при загрузке данных: ${response.statusText}`);
@@ -57,7 +57,7 @@ export const NewsProvider = ({ children }) => {
   // Увеличение счетчика просмотров новости
   const incrementViews = useCallback(async (newsId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/news/${newsId}/view`, {
+      const response = await fetch(`http://127.0.0.1:5000/api/news/${newsId}/view`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

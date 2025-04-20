@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import AudioForm from './AudioForm';
 
 // URL API для административных операций
-const ADMIN_API_URL = 'http://localhost:5000/admin';
-const API_URL = 'http://localhost:5000/api';
+const ADMIN_API_URL = 'http://127.0.0.1:5000/admin';
+const API_URL = 'http://127.0.0.1:5000/api';
 
 const AudioManager = () => {
   const [audioItems, setAudioItems] = useState([]);
@@ -12,6 +12,7 @@ const AudioManager = () => {
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [currentAudio, setCurrentAudio] = useState(null);
+    const { user, isAdmin, logout } = useAuth();
 
   // Загружаем список аудионовостей
   const fetchAudioItems = async () => {

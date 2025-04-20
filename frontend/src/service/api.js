@@ -1,5 +1,5 @@
 // api.js
-const API_URL = 'http://localhost:5000/api'; // URL нашего API
+const API_URL = 'http://127.0.0.1:5000/api'; // URL нашего API
 
 /**
  * Получить все новости

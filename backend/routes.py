@@ -2,6 +2,7 @@
 from flask import Blueprint, jsonify, request
 import database as db
 from models import NewsItem, Collection, NewsAudio
+from auth import login_required
 
 api_bp = Blueprint('api', __name__)
 
@@ -89,3 +90,38 @@ def increment_views(news_id):
         return jsonify({'error': 'Не удалось увеличить счетчик просмотров'}), 400
     
     return jsonify({'success': True, 'views': new_views})
+
+# --------- Маршруты для комментариев ---------
+@api_bp.route('/news/<int:news_id>/comments', methods=['GET'])
+def get_news_comments(news_id):
+    """Получение всех комментариев для новости"""
+    comments = db.get_comments_for_news(news_id)
+    
+    return jsonify({
+        'comments': comments
+    })
+
+@api_bp.route('/news/<int:news_id>/comments', methods=['POST'])
+@login_required
+def add_comment(news_id):
+    """Добавление нового комментария"""
+    data = request.json
+    
+    if not data or 'content' not in data:
+        return jsonify({'error': 'Текст комментария обязателен'}), 400
+    
+    user_id = request.user['user_id']  # Получаем user_id из JWT-токена
+    
+    comment_id = db.add_comment(news_id, user_id, data['content'])
+    
+    if comment_id:
+        # Получаем данные созданного комментария
+        all_comments = db.get_comments_for_news(news_id)
+        created_comment = next((c for c in all_comments if c['id'] == comment_id), None)
+        
+        return jsonify({
+            'message': 'Комментарий успешно добавлен',
+            'comment': created_comment
+        }), 201
+    
+    return jsonify({'error': 'Ошибка при добавлении комментария'}), 500

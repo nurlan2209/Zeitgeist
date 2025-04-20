@@ -12,10 +12,12 @@ import Desktop from "./pages/Desktop";
 import Login from "./components/Login";
 import AdminPanel from "./components/AdminPanel";
 import NotFound from "./components/NotFound";
+import { useAuth } from "./service/AuthContext";
+
 
 // Защищенный маршрут для админ-панели
 const ProtectedRoute = ({ children }) => {
-  const { user, isAdmin, loading } = useAuth();
+  const { user, isAdmin, logout } = useAuth();
   
   if (loading) {
     return <div>Loading...</div>;
@@ -32,7 +34,6 @@ function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
-
   useEffect(() => {
     if (action !== "POP") {
       window.scrollTo(0, 0);

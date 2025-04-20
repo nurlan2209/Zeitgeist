@@ -41,7 +41,7 @@ def update_news(news_id):
     # Обновляем данные новости
     data['id'] = news_id  # Убеждаемся, что ID не изменится
     updated_news = NewsItem.from_dict(data)
-    db.add_news_item(updated_news)  # Используем ту же функцию для обновления (REPLACE)
+    db.add_news_item(updated_news)  # Используем ту же функцию для обновления
     
     return jsonify({
         'message': 'Новость успешно обновлена',
@@ -57,13 +57,19 @@ def delete_news(news_id):
     if not existing_news:
         return jsonify({'error': 'Новость не найдена'}), 404
     
-    # Удаляем новость из БД
     conn = db.get_db_connection()
-    conn.execute('DELETE FROM news_items WHERE id = ?', (news_id,))
-    conn.commit()
-    conn.close()
+    cursor = conn.cursor()
     
-    return jsonify({'message': 'Новость успешно удалена'})
+    try:
+        # Удаляем новость из БД
+        cursor.execute('DELETE FROM news_items WHERE id = %s', (news_id,))
+        conn.commit()
+        return jsonify({'message': 'Новость успешно удалена'})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': f'Ошибка при удалении новости: {str(e)}'}), 500
+    finally:
+        conn.close()
 
 # Маршруты для управления коллекциями
 @admin_bp.route('/collections', methods=['POST'])
@@ -116,19 +122,23 @@ def delete_collection(collection_id):
     if not existing_collection:
         return jsonify({'error': 'Коллекция не найдена'}), 404
     
-    # Удаляем коллекцию из БД
     conn = db.get_db_connection()
+    cursor = conn.cursor()
     
-    # Сначала удаляем все связи
-    conn.execute('DELETE FROM collection_news WHERE collection_id = ?', (collection_id,))
-    
-    # Затем удаляем саму коллекцию
-    conn.execute('DELETE FROM collections WHERE id = ?', (collection_id,))
-    
-    conn.commit()
-    conn.close()
-    
-    return jsonify({'message': 'Коллекция успешно удалена'})
+    try:
+        # Сначала удаляем все связи
+        cursor.execute('DELETE FROM collection_news WHERE collection_id = %s', (collection_id,))
+        
+        # Затем удаляем саму коллекцию
+        cursor.execute('DELETE FROM collections WHERE id = %s', (collection_id,))
+        
+        conn.commit()
+        return jsonify({'message': 'Коллекция успешно удалена'})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': f'Ошибка при удалении коллекции: {str(e)}'}), 500
+    finally:
+        conn.close()
 
 # Маршруты для управления аудионовостями
 @admin_bp.route('/audio', methods=['POST'])
@@ -181,10 +191,58 @@ def delete_audio(audio_id):
     if not existing_audio:
         return jsonify({'error': 'Аудионовость не найдена'}), 404
     
-    # Удаляем аудионовость из БД
     conn = db.get_db_connection()
-    conn.execute('DELETE FROM news_audio WHERE id = ?', (audio_id,))
-    conn.commit()
-    conn.close()
+    cursor = conn.cursor()
     
-    return jsonify({'message': 'Аудионовость успешно удалена'})
+    try:
+        # Удаляем аудионовость из БД
+        cursor.execute('DELETE FROM news_audio WHERE id = %s', (audio_id,))
+        conn.commit()
+        return jsonify({'message': 'Аудионовость успешно удалена'})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': f'Ошибка при удалении аудионовости: {str(e)}'}), 500
+    finally:
+        conn.close()
+
+# Маршруты для модерации комментариев
+@admin_bp.route('/comments', methods=['GET'])
+@admin_required
+def get_all_comments():
+    """Получение всех комментариев для модерации"""
+    conn = db.get_db_connection()
+    cursor = conn.cursor()
+    
+    try:
+        cursor.execute('''
+            SELECT c.id, c.content, c.created_at, n.title as news_title, 
+                   u.username, c.news_id, c.user_id
+            FROM comments c
+            JOIN news_items n ON c.news_id = n.id
+            JOIN users u ON c.user_id = u.id
+            ORDER BY c.created_at DESC
+        ''')
+        
+        # Преобразуем результат в список словарей
+        columns = [desc[0] for desc in cursor.description]
+        comments = [dict(zip(columns, row)) for row in cursor.fetchall()]
+        
+        return jsonify({
+            'comments': comments
+        })
+    except Exception as e:
+        return jsonify({'error': f'Ошибка при получении комментариев: {str(e)}'}), 500
+    finally:
+        conn.close()
+
+@admin_bp.route('/comments/<int:comment_id>', methods=['DELETE'])
+@admin_required
+def delete_comment(comment_id):
+    """Удаление комментария администратором"""
+    # Удаляем комментарий
+    success = db.delete_comment(comment_id)
+    
+    if success:
+        return jsonify({'message': 'Комментарий успешно удален'})
+    else:
+        return jsonify({'error': 'Комментарий не найден или не может быть удален'}), 404

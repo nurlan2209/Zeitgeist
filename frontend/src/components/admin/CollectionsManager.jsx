@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import CollectionForm from './CollectionForm';
 
 // URL API для административных операций
-const ADMIN_API_URL = 'http://localhost:5000/admin';
-const API_URL = 'http://localhost:5000/api';
+const ADMIN_API_URL = 'http://127.0.0.1:5000/admin';
+const API_URL = 'http://127.0.0.1:5000/api';
+
 
 const CollectionsManager = () => {
   const [collections, setCollections] = useState([]);
@@ -13,6 +14,7 @@ const CollectionsManager = () => {
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [currentCollection, setCurrentCollection] = useState(null);
+  const { user, isAdmin, logout } = useAuth();
 
   // Загружаем список коллекций и новостей
   const fetchData = async () => {

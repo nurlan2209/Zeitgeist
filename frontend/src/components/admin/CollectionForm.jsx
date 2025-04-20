@@ -9,6 +9,7 @@ const CollectionForm = ({ collection, newsList, onSave, onCancel }) => {
     image: collection.image || '',
     newsIds: collection.newsIds || []
   });
+    const { user, isAdmin, logout } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;

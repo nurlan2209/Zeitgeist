@@ -14,6 +14,7 @@ const NewsForm = ({ newsItem, onSave, onCancel }) => {
     date: newsItem.date || new Date().toISOString().slice(0, 10),
     time: newsItem.time || new Date().toTimeString().slice(0, 5)
   });
+  const { user, isAdmin, logout } = useAuth();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

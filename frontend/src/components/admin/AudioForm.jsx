@@ -11,6 +11,7 @@ const AudioForm = ({ audioItem, onSave, onCancel }) => {
     date: audioItem.date || '',
     duration: audioItem.duration || 0
   });
+    const { user, isAdmin, logout } = useAuth();
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;

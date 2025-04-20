@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import NewsForm from './NewsForm';
 
 // URL API для административных операций
-const ADMIN_API_URL = 'http://localhost:5000/admin';
-const API_URL = 'http://localhost:5000/api';
+const ADMIN_API_URL = 'http://127.0.0.1:5000/admin';
+const API_URL = 'http://127.0.0.1:5000/api';
 
 const NewsManager = () => {
   const [news, setNews] = useState([]);
@@ -12,6 +12,7 @@ const NewsManager = () => {
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [currentNews, setCurrentNews] = useState(null);
+  const { user, isAdmin, logout } = useAuth();
 
   // Загружаем список новостей
   const fetchNews = async () => {
