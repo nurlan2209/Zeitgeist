@@ -2,23 +2,22 @@
 from flask import Blueprint, jsonify, request
 import database as db
 from models import NewsItem, Collection, NewsAudio
-from auth import admin_required
+from auth import admin_required ,login_required
 
 admin_bp = Blueprint('admin', __name__)
 
-# Маршруты для управления новостями
 @admin_bp.route('/news', methods=['POST'])
-@admin_required
+@login_required
 def create_news():
     """Создание новой новости"""
     data = request.json
-    
+
     if not data or 'title' not in data:
         return jsonify({'error': 'Заголовок обязателен'}), 400
-    
+
     news_item = NewsItem.from_dict(data)
     news_id = db.add_news_item(news_item)
-    
+
     return jsonify({
         'message': 'Новость успешно создана',
         'id': news_id
@@ -29,20 +28,20 @@ def create_news():
 def update_news(news_id):
     """Обновление существующей новости"""
     data = request.json
-    
+
     if not data:
         return jsonify({'error': 'Данные для обновления не предоставлены'}), 400
-    
+
     # Проверяем, существует ли новость
     existing_news = db.get_news_item_by_id(news_id)
     if not existing_news:
         return jsonify({'error': 'Новость не найдена'}), 404
-    
+
     # Обновляем данные новости
     data['id'] = news_id  # Убеждаемся, что ID не изменится
     updated_news = NewsItem.from_dict(data)
     db.add_news_item(updated_news)  # Используем ту же функцию для обновления
-    
+
     return jsonify({
         'message': 'Новость успешно обновлена',
         'news': updated_news.to_dict()

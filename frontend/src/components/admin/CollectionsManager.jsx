@@ -1,6 +1,8 @@
 // CollectionsManager.jsx
 import React, { useState, useEffect } from 'react';
 import CollectionForm from './CollectionForm';
+import { useAuth } from '../../service/AuthContext';
+
 
 // URL API для административных операций
 const ADMIN_API_URL = 'http://127.0.0.1:5000/admin';
@@ -82,6 +84,10 @@ const CollectionsManager = () => {
       const response = await fetch(`${ADMIN_API_URL}/collections/${id}`, {
         method: 'DELETE',
         credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        },
       });
       
       if (response.ok) {
@@ -109,6 +115,7 @@ const CollectionsManager = () => {
         method: isNew ? 'POST' : 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         },
         body: JSON.stringify(collectionData),
         credentials: 'include',

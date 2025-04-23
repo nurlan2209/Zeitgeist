@@ -17,7 +17,7 @@ class NewsItem:
         self.time = time
         self.created_at = created_at if created_at else datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         self.views = views  # Добавляем поле views с значением по умолчанию 0
-    
+
     def to_dict(self):
         return {
             'id': self.id,

@@ -74,6 +74,10 @@ const AudioManager = () => {
       const response = await fetch(`${ADMIN_API_URL}/audio/${id}`, {
         method: 'DELETE',
         credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        },
       });
       
       if (response.ok) {
@@ -101,7 +105,7 @@ const AudioManager = () => {
         method: isNew ? 'POST' : 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`,
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         },
         body: JSON.stringify(audioData),
         credentials: 'include',

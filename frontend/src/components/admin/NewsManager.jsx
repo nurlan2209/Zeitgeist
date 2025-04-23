@@ -13,8 +13,7 @@ const NewsManager = () => {
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [currentNews, setCurrentNews] = useState(null);
-  const token = localStorage.getItem('authToken');
-  const { user, isAdmin, logout } = useAuth();
+  const { user, isAdmin } = useAuth();
 
   // Загружаем список новостей
   const fetchNews = async () => {
@@ -56,7 +55,7 @@ const NewsManager = () => {
       featured: false,
       url: '',
       date: new Date().toISOString().slice(0, 10),
-      time: ''
+      time: new Date().toTimeString().slice(0, 5)
     });
     setShowForm(true);
   };
@@ -76,6 +75,10 @@ const NewsManager = () => {
     try {
       const response = await fetch(`${ADMIN_API_URL}/news/${id}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        },
         credentials: 'include',
       });
       
@@ -96,20 +99,26 @@ const NewsManager = () => {
   const handleSave = async (newsData) => {
     try {
       const isNew = !newsData.id;
-      const url = isNew 
-        ? `${ADMIN_API_URL}/news` 
+      const url = isNew
+        ? `${ADMIN_API_URL}/news`
         : `${ADMIN_API_URL}/news/${newsData.id}`;
-      
+      // Добавляем отладочный вывод
+      console.log('Отправка запроса на сохранение новости:', {
+        url,
+        method: isNew ? 'POST' : 'PUT',
+        token: localStorage.getItem('authToken'),
+        data: newsData
+      });
+
       const response = await fetch(url, {
         method: isNew ? 'POST' : 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`,
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         },
         body: JSON.stringify(newsData),
         credentials: 'include',
       });
-      
       if (response.ok) {
         // Закрываем форму и обновляем список новостей
         setShowForm(false);
