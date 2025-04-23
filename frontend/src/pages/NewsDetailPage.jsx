@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useNews } from '../service/NewsContext';
 import Footer_but from '../components/footer/Footer_but';
 import Sidebar from '../components/footer/Sidebar';
+import Comments from '../components/Comments'; // Import the Comments component
 import './NewsDetailPage.css';
 
 function NewsDetailPage() {
@@ -11,20 +12,20 @@ function NewsDetailPage() {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
-  // Конвертируем ID в число
+  // Convert ID to number
   const numericId = parseInt(newsId, 10);
   
-  // Получаем данные новости
+  // Get news data
   const newsItem = getNewsById(numericId);
 
-  // Увеличиваем счетчик просмотров при загрузке страницы
+  // Increment view counter when page loads
   useEffect(() => {
     if (numericId && incrementViews) {
       incrementViews(numericId);
     }
   }, [numericId, incrementViews]);
 
-  // Форматируем дату
+  // Format date
   const formatDate = (dateString) => {
     if (!dateString) return "";
     
@@ -40,7 +41,7 @@ function NewsDetailPage() {
     }
   };
 
-  // Обработчик для сайдбара
+  // Sidebar handlers
   const handleToggle = (newState) => {
     setSidebarOpen(newState);
   };
@@ -49,7 +50,7 @@ function NewsDetailPage() {
     setSidebarOpen(false);
   };
 
-  // Если новость не найдена
+  // If news not found
   if (!newsItem) {
     return (
       <div className="not-found-container">
@@ -64,7 +65,7 @@ function NewsDetailPage() {
 
   return (
     <div className="news-detail-page">
-      {/* Кнопка меню и сайдбар */}
+      {/* Menu button and sidebar */}
       <div className="news-detail-header">
         <Link to="/" className="back-to-home">
           ← На главную
@@ -75,13 +76,13 @@ function NewsDetailPage() {
       <Sidebar isOpen={sidebarOpen} onClose={handleClose} />
 
       <div className="news-detail-container">
-        {/* Категория */}
+        {/* Category */}
         <div className="news-detail-category">{newsItem.category}</div>
         
-        {/* Заголовок */}
+        {/* Title */}
         <h1 className="news-detail-title">{newsItem.title}</h1>
         
-        {/* Информация об авторе и дате */}
+        {/* Author and date info */}
         <div className="news-detail-meta">
           <span className="news-detail-author">By {newsItem.author}</span>
           <span className="news-detail-date">{formatDate(newsItem.date)}</span>
@@ -90,13 +91,13 @@ function NewsDetailPage() {
           )}
         </div>
 
-        {/* Изображение */}
+        {/* Image */}
         {newsItem.image && (
           <div className="news-detail-image-container">
-            <img 
-              src={newsItem.image} 
-              alt={newsItem.title} 
-              className="news-detail-image" 
+            <img
+              src={newsItem.image}
+              alt={newsItem.title}
+              className="news-detail-image"
             />
           </div>
         )}
@@ -104,7 +105,10 @@ function NewsDetailPage() {
           <p className="news-detail-description">{newsItem.description}</p>
         </div>
 
-        {/* Кнопка возврата */}
+        {/* Comments section */}
+        <Comments newsId={numericId} />
+
+        {/* Back button */}
         <div className="news-detail-actions">
           <button onClick={() => navigate(-1)} className="back-button">
             ← Вернуться к списку новостей

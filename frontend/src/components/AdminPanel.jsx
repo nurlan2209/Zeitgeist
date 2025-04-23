@@ -4,17 +4,18 @@ import { useAuth } from '../service/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import './AdminPanel.css';
 
-// Компоненты для управления разными типами данных
+// Admin components
 import NewsManager from './admin/NewsManager';
 import CollectionsManager from './admin/CollectionsManager';
 import AudioManager from './admin/AudioManager';
+import CommentsManager from './admin/CommentsManager'; // Import the new CommentsManager
 
 const AdminPanel = () => {
   const { user, isAdmin, logout } = useAuth();
   const [activeTab, setActiveTab] = useState('news');
   const navigate = useNavigate();
 
-  // Проверяем, авторизован ли пользователь как админ
+  // Check if user is authorized as admin
   useEffect(() => {
     if (!user || !isAdmin) {
       navigate('/login');
@@ -27,7 +28,7 @@ const AdminPanel = () => {
     }
   };
 
-  // Если пользователь не авторизован или не админ, показываем заглушку
+  // Show loading screen if user is not authorized or not admin
   if (!user || !isAdmin) {
     return <div className="loading-panel">Проверка прав доступа...</div>;
   }
@@ -73,6 +74,14 @@ const AdminPanel = () => {
               Аудио
             </button>
           </li>
+          <li>
+            <button 
+              className={activeTab === 'comments' ? 'active' : ''}
+              onClick={() => setActiveTab('comments')}
+            >
+              Комментарии
+            </button>
+          </li>
         </ul>
       </nav>
 
@@ -80,6 +89,7 @@ const AdminPanel = () => {
         {activeTab === 'news' && <NewsManager />}
         {activeTab === 'collections' && <CollectionsManager />}
         {activeTab === 'audio' && <AudioManager />}
+        {activeTab === 'comments' && <CommentsManager />}
       </main>
     </div>
   );
