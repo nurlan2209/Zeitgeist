@@ -40,23 +40,22 @@ function Main({ className = "", newsId}) {
                   </div>
 
                   <div className="main-article-description">
-                      <Link to={`/news/${newsId}`} className="main-article-title-link">
-                        <div className="description-container">
-                            <h1 className="their-time-is">
-                            {newsItem.title}
-                            </h1>
+                    <Link to={`/news/${newsId}`} className="main-article-title-link">
+                      <div className="description-container">
+                          <h1 className="their-time-is">
+                          {newsItem.title}
+                          </h1>
 
-                            <p className="the-murder-of">
-                            {newsItem.description}
-                            </p>
-                        </div>
-                      </Link>
-
-                      <div className="author-container">
-                          <p className="by-liel-leibovitz">
-                            BY {newsItem.author}
+                          <p className="the-murder-of">
+                          {newsItem.description}
                           </p>
                       </div>
+                      <div className="author-container">
+                        <p className="by-liel-leibovitz">
+                          BY {newsItem.author}
+                        </p>
+                    </div>
+                    </Link>
                   </div>
               </div>
           </div>

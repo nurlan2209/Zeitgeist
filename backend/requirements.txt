@@ -1,4 +1,7 @@
-Flask==2.0.1
-Flask-Cors==3.0.10
+Flask
+Flask-Cors
 psycopg2
-python-dotenv==1.0.0
+python-dotenv
+werkzeug
+bcrypt
+jwt

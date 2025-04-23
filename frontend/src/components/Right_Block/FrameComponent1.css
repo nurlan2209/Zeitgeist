@@ -163,3 +163,49 @@
   font-family: var(--font-graebenbach);
   margin-top: -100px;
 }
+@media screen and (max-width: 768px) {
+  .news-right-container-parent {
+    margin-left: 0px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+  }
+  .news-icon ,.main-article-background , .listen-icon , .side-news-icon {
+    display: none;
+  }
+  .news-right-parent{
+    align-items: center;
+  }
+  .news-left-link {
+    display: flex;
+    text-decoration: none;
+    gap: 20px;
+    color: inherit;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    transition: transform 0.2s ease;
+    flex-direction: column;
+  }
+  .news-right {
+    width: 100%;
+  }
+  .by-shayahmet-z{
+    margin-top: 0px;
+  }
+  .titels{
+    height: max-content;
+  }
+  .news-item{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .main{
+    align-items: center;
+    width: 385px;
+
+  }
+}
