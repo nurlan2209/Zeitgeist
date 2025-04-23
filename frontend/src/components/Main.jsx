@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import { useNews } from "../service/NewsContext";
+import { Link } from "react-router-dom";
+import { useNews } from "../service/NewsContext.jsx";
 import "./Main.css";
 
 function Main({ className = "", newsId}) {
@@ -17,7 +18,9 @@ function Main({ className = "", newsId}) {
               src="/main-article-background.svg"
           />
 
-          <div className="main-article-image" style={{backgroundImage: `url(${newsItem.image})`}} />
+          <Link to={`/news/${newsId}`} className="main-article-link">
+            <div className="main-article-image" style={{backgroundImage: `url(${newsItem.image})`}} />
+          </Link>
 
           <div className="main-article-content">
               <div className="frame-group">
@@ -37,15 +40,17 @@ function Main({ className = "", newsId}) {
                   </div>
 
                   <div className="main-article-description">
-                      <div className="description-container">
-                          <h1 className="their-time-is">
-                          {newsItem.title}
-                          </h1>
+                      <Link to={`/news/${newsId}`} className="main-article-title-link">
+                        <div className="description-container">
+                            <h1 className="their-time-is">
+                            {newsItem.title}
+                            </h1>
 
-                          <p className="the-murder-of">
-                          {newsItem.description}
-                          </p>
-                      </div>
+                            <p className="the-murder-of">
+                            {newsItem.description}
+                            </p>
+                        </div>
+                      </Link>
 
                       <div className="author-container">
                           <p className="by-liel-leibovitz">

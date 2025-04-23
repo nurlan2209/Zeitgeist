@@ -120,3 +120,17 @@
 .farticle-title:hover::after {
     width: 100%;
 }
+.farticle-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s;
+}
+
+.farticle-link:hover {
+  transform: translateY(-3px);
+}
+
+.farticle-link:hover .farticle-title {
+  color: var(--color-tomato);
+}

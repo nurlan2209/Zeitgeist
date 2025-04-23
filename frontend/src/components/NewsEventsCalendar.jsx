@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNews } from "../service/NewsContext";
+import { useNews } from "../service/NewsContext.jsx";
 import NewsModal from "./NewsModal";
 import "./NewsEventsCalendar.css";
+import { Link } from 'react-router-dom';
+
 
 function NewsEventsCalendar() {
   const { news, incrementViews } = useNews(); // Предполагаем, что есть метод incrementViews
@@ -48,16 +50,11 @@ function NewsEventsCalendar() {
     };
   };
 
-  // Обработчик клика на карточку новости
   const handleNewsClick = (newsItem) => {
-    setSelectedNews(newsItem);
-    
-    // Увеличиваем счетчик просмотров, если такая функция есть в контексте
     if (typeof incrementViews === 'function') {
       incrementViews(newsItem.id);
     }
   };
-
   // Закрытие модального окна
   const handleCloseModal = () => {
     setSelectedNews(null);

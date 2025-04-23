@@ -115,3 +115,19 @@
   color: var(--color-gray-200);
   font-family: var(--font-graebenbach);
 }
+.news-left-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  z-index: 5;
+  transition: transform 0.2s ease;
+}
+
+.news-left-link:hover {
+  transform: translateY(-5px);
+}
+
+.news-left-link:hover .titels {
+  color: var(--color-tomato);
+}

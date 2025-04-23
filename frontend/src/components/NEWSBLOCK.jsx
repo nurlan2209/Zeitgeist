@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import { useNews } from "../service/NewsContext";
+import { Link } from "react-router-dom";
+import { useNews } from "../service/NewsContext.jsx";
 import "./NEWSBLOCK.css";
 
 function NEWSBLOCK({ className = "", newsId }) {
@@ -23,31 +24,33 @@ function NEWSBLOCK({ className = "", newsId }) {
   };
 
   return (
-    <div className={`news-block ${className}`}>
-      <h2 className="news1">
-        {newsItem.category}
-      </h2>
+    <Link to={`/news/${newsId}`} className="news-block-link">
+      <div className={`news-block ${className}`}>
+        <h2 className="news1">
+          {newsItem.category}
+        </h2>
 
-      <div className="news-line2" />
-      <h1 className="titels1">
-        {newsItem.title}
-      </h1>
+        <div className="news-line2" />
+        <h1 className="titels1">
+          {newsItem.title}
+        </h1>
 
-      {/* Добавляем время публикации статьи */}
-      {newsItem.created_at && (
-        <div className="news-created-at">
-          {formatCreatedAt(newsItem.created_at)}
-        </div>
-      )}
+        {/* Добавляем время публикации статьи */}
+        {newsItem.created_at && (
+          <div className="news-created-at">
+            {formatCreatedAt(newsItem.created_at)}
+          </div>
+        )}
 
-      <h3 className="description">
-        {newsItem.description}
-      </h3>
+        <h3 className="description">
+          {newsItem.description}
+        </h3>
 
-      <b className="author">
-        BY {newsItem.author}
-      </b>
-    </div>
+        <b className="author">
+          BY {newsItem.author}
+        </b>
+      </div>
+    </Link>
   );
 }
 

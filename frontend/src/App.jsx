@@ -8,10 +8,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useAuth } from "./service/AuthContext";
+import { NewsProvider } from "./service/NewsContext";
 import Desktop from "./pages/Desktop";
+import NewsDetailPage from "./pages/NewsDetailPage";
 import Login from "./components/Login";
 import AdminPanel from "./components/AdminPanel";
 import NotFound from "./components/NotFound";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // Защищенный маршрут для админ-панели
 const ProtectedRoute = ({ children }) => {
@@ -55,6 +58,12 @@ function App() {
         title = "Вход в систему";
         metaDescription = "Авторизация на портале";
         break;
+      default:
+        if (pathname.startsWith('/news/')) {
+          title = "Новость | Zeitgeist";
+          metaDescription = "Подробная информация о новости";
+        }
+        break;
     }
 
     if (title) {
@@ -81,16 +90,28 @@ function App() {
             <AdminPanel />
           </ProtectedRoute>
         }
+        errorElement={<ErrorBoundary />}
       />
       
       {/* Маршрут для входа */}
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Login />} errorElement={<ErrorBoundary />} />
+      
+      {/* Маршрут для детальной страницы новости */}
+      <Route 
+        path="/news/:newsId" 
+        element={
+          <NewsProvider>
+            <NewsDetailPage />
+          </NewsProvider>
+        } 
+        errorElement={<ErrorBoundary />}
+      />
       
       {/* Основной маршрут */}
-      <Route element={<Desktop />} path="/" />
+      <Route element={<Desktop />} path="/" errorElement={<ErrorBoundary />} />
       
       {/* Маршрут для страницы "Не найдено" */}
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} errorElement={<ErrorBoundary />} />
     </Routes>
   );
 }

@@ -167,3 +167,23 @@
   color: var(--color-gray-200);
   font-family: var(--font-graebenbach);
 }
+
+.main-article-link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.main-article-link:hover {
+  transform: scale(1.02);
+}
+
+.main-article-title-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.main-article-title-link:hover .their-time-is {
+  color: var(--color-tomato);
+}

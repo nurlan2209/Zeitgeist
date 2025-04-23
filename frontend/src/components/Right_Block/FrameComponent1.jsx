@@ -4,7 +4,9 @@ import Main from "../Main";
 import NewsAudioPlayer from "../Listen/NewsAudioPlayer";
 import PropTypes from "prop-types";
 import "./FrameComponent1.css";
-import { useNews } from "../../service/NewsContext";
+import { useNews } from "../../service/NewsContext.jsx";
+import { Link } from 'react-router-dom';
+
 
 function FrameComponent1({ className = "" }) {
     const { loading, news } = useNews();
@@ -45,28 +47,29 @@ function FrameComponent1({ className = "" }) {
 
           <div className="banner-content">
               <div className="news-right1">
-                  <div className="side-news-item">
-                      <div className="side-news-content">
-                          <div className="side-news-header">
-                              {/* Используем sideNewsItem вместо topNewsItems[0] */}
-                              <h2 className="news7">
-                                  {news.find(item => item.id === sideNewsId)?.category || "NEWS"}
-                              </h2>
+              <div className="side-news-item">
+                      <Link to={`/news/${sideNewsId}`} className="side-news-link">
+                        <div className="side-news-content">
+                            <div className="side-news-header">
+                                {/* Используем sideNewsItem вместо topNewsItems[0] */}
+                                <h2 className="news7">
+                                    {news.find(item => item.id === sideNewsId)?.category || "NEWS"}
+                                </h2>
 
-                              <div className="news-line1" />
-                          </div>
+                                <div className="news-line1" />
+                            </div>
 
-                          <h1 className="titels6">
-                              {news.find(item => item.id === sideNewsId)?.title || "Default Title"}
-                          </h1>
-                      </div>
+                            <h1 className="titels6">
+                                {news.find(item => item.id === sideNewsId)?.title || "Default Title"}
+                            </h1>
+                        </div>
 
+                        <b className="by-shayahmet-z8">
+                            BY {news.find(item => item.id === sideNewsId)?.author || "Author"}
+                        </b>
+
+                      </Link>
                   </div>
-
-                  <b className="by-shayahmet-z8">
-                      BY {news.find(item => item.id === sideNewsId)?.author || "Author"}
-                  </b>
-
                   <img
                       alt=""
                       className="side-news-icon"

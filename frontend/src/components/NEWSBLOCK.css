@@ -59,3 +59,24 @@
   margin: 5px 0 10px 0;
   font-style: italic;
 }
+.news-created-at {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0 10px 0;
+  font-style: italic;
+}
+
+.news-block-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.news-block-link:hover {
+  transform: translateY(-5px);
+}
+
+.news-block-link:hover .titels1 {
+  color: var(--color-tomato);
+}

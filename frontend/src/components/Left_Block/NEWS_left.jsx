@@ -1,6 +1,8 @@
+
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./NEWS_left.css";
-import { useNews } from "../../service/NewsContext";
+import { useNews } from "../../service/NewsContext.jsx";
 
 function NEWS_left({ className = "" , newsId}) {
     const { getNewsById } = useNews();
@@ -9,31 +11,33 @@ function NEWS_left({ className = "" , newsId}) {
     if (!newsItem) return null;
   return (
       <div className={`news-right ${className}`}>
-          <div className="news-item">
-              <div className="news-content">
-                  <a className="news">
-                      {newsItem.category}
-                  </a>
+          <Link to={`/news/${newsId}`} className="news-left-link">
+            <div className="news-item">
+                <div className="news-content">
+                    <a className="news">
+                        {newsItem.category}
+                    </a>
 
-                  <div className="news-lines" />
-              </div>
+                    <div className="news-lines" />
+                </div>
 
-              <h1 className="titels">
-                  {newsItem.title}
-              </h1>
-          </div>
+                <h1 className="titels">
+                    {newsItem.title}
+                </h1>
+            </div>
 
 
-          <b className="by-shayahmet-z">
-              BY {newsItem.author}
-          </b>
+            <b className="by-shayahmet-z">
+                BY {newsItem.author}
+            </b>
 
+          </Link>
           <img
-              alt=""
-              className="news-icon"
-              loading="lazy"
-              src="/vector-5.svg"
-          />
+                alt=""
+                className="news-icon"
+                loading="lazy"
+                src="/vector-5.svg"
+            />
       </div>
   );
 }

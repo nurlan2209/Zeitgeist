@@ -1,6 +1,8 @@
+
 import React from "react";
 import PropTypes from "prop-types";
-import { useNews } from "../service/NewsContext";
+import { Link } from "react-router-dom";
+import { useNews } from "../service/NewsContext.jsx";
 import "./NewsByCategory.css";
 
 const NewsCategory = ({ category, articles }) => {
@@ -12,15 +14,16 @@ const NewsCategory = ({ category, articles }) => {
       <div className="fcategory-articles">
         {articles.map((article) => (
           <div key={article.id} className="article-item">
-            <h3 className="farticle-title">{article.title}</h3>
-            <p className="farticle-author">BY {article.author}</p>
+            <Link to={`/news/${article.id}`} className="farticle-link">
+              <h3 className="farticle-title">{article.title}</h3>
+              <p className="farticle-author">BY {article.author}</p>
+            </Link>
           </div>
         ))}
       </div>
     </div>
   );
 };
-
 function NewsByCategory() {
   const { loading, news } = useNews();
 
