@@ -31,7 +31,7 @@ export const AdminRoute = () => {
   }
   
   // Если пользователь не авторизован или не админ, перенаправляем
-  if (!user || !isAdmin()) {
+  if (!user || !isAdmin) {
     return <Navigate to="/" replace />;
   }
   

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NewsProvider } from "../service/NewsContext";
-import { useAuth } from "../service/AuthContext";
+import { useAuth} from '../service/AuthContext';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";

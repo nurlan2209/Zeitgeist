@@ -1,6 +1,7 @@
 // NewsManager.jsx
 import React, { useState, useEffect } from 'react';
 import NewsForm from './NewsForm';
+import { useAuth } from '../../service/AuthContext';
 
 // URL API для административных операций
 const ADMIN_API_URL = 'http://127.0.0.1:5000/admin';
@@ -12,6 +13,7 @@ const NewsManager = () => {
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [currentNews, setCurrentNews] = useState(null);
+  const token = localStorage.getItem('authToken');
   const { user, isAdmin, logout } = useAuth();
 
   // Загружаем список новостей
@@ -102,6 +104,7 @@ const NewsManager = () => {
         method: isNew ? 'POST' : 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`,
         },
         body: JSON.stringify(newsData),
         credentials: 'include',

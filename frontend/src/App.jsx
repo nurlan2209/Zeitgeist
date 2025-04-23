@@ -12,18 +12,16 @@ import Desktop from "./pages/Desktop";
 import Login from "./components/Login";
 import AdminPanel from "./components/AdminPanel";
 import NotFound from "./components/NotFound";
-import { useAuth } from "./service/AuthContext";
-
 
 // Защищенный маршрут для админ-панели
 const ProtectedRoute = ({ children }) => {
-  const { user, isAdmin, logout } = useAuth();
+  const { user, isAdmin, loading } = useAuth();
   
   if (loading) {
     return <div>Loading...</div>;
   }
   
-  if (!user || !isAdmin()) {
+  if (!user || !isAdmin) {
     return <Navigate to="/login" replace />;
   }
   

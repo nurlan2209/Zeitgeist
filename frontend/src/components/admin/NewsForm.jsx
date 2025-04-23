@@ -1,5 +1,6 @@
 // NewsForm.jsx
 import React, { useState } from 'react';
+import { useAuth } from '../../service/AuthContext';
 
 const NewsForm = ({ newsItem, onSave, onCancel }) => {
   const [formData, setFormData] = useState({

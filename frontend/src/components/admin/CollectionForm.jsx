@@ -1,6 +1,8 @@
 // CollectionForm.jsx
 import React, { useState } from 'react';
 
+import { useAuth } from '../../service/AuthContext';
+
 const CollectionForm = ({ collection, newsList, onSave, onCancel }) => {
   const [formData, setFormData] = useState({
     id: collection.id || null,

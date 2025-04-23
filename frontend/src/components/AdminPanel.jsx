@@ -16,7 +16,7 @@ const AdminPanel = () => {
 
   // Проверяем, авторизован ли пользователь как админ
   useEffect(() => {
-    if (!user || !isAdmin()) {
+    if (!user || !isAdmin) {
       navigate('/login');
     }
   }, [user, isAdmin, navigate]);
@@ -28,7 +28,7 @@ const AdminPanel = () => {
   };
 
   // Если пользователь не авторизован или не админ, показываем заглушку
-  if (!user || !isAdmin()) {
+  if (!user || !isAdmin) {
     return <div className="loading-panel">Проверка прав доступа...</div>;
   }
 
