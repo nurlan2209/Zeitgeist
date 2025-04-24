@@ -1,0 +1,153 @@
+.news-events-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 15px 0;
+}
+
+.news-events-timeline {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 5px;
+  min-width: 100%;
+}
+
+.event-card-wrapper {
+  flex: 0 0 300px;
+  min-width: 300px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.event-card-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.event-date-header {
+  background-color: var(--color-tomato);
+  color: white;
+  padding: 8px 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 16px;
+}
+
+.event-card {
+  display: flex;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 250px;
+}
+
+.event-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.event-time {
+  flex: 0 0 60px;
+  background-color: #f5f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: #444;
+  font-size: 14px;
+  padding: 15px 5px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.event-content {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-title {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.event-author {
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.event-description {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #555;
+  margin: 0 0 auto;
+}
+
+.event-views {
+  font-size: 12px;
+  color: #777;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.event-views::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23777' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+  background-size: contain;
+  margin-right: 5px;
+}
+
+.news-events-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 768px) {
+  .event-card-wrapper {
+    flex: 0 0 260px;
+    min-width: 260px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .event-card-wrapper {
+    flex: 0 0 230px;
+    min-width: 230px;
+  }
+  
+  .event-title {
+    font-size: 15px;
+  }
+  
+  .event-description {
+    font-size: 13px;
+    width: 140px;
+  }
+  .event-card{
+    width: 250px;
+  }
+  .event-content{
+    width: 200px;
+  }
+  
+}

@@ -1,0 +1,166 @@
+.frame-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-21xl);
+}
+.desktop-1 {
+  width: 100%;
+  height: max-content;
+  position: relative;
+  background-color: var(--color-whitesmoke);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 35px var(--padding-31xl) 106px;
+  box-sizing: border-box;
+  gap: 202px;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.mySwiper {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.swiper {
+  mix-blend-mode: luminosity;
+  margin-bottom: 70px;
+}
+
+/* Стили для ссылки на админ-панель */
+.admin-link-container {
+  position: fixed;
+  top: 80px; /* Измените по необходимости */
+  right: 20px;
+  z-index: 1000;
+}
+
+.admin-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #C73E1D;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.admin-link:hover {
+  background-color: #A32C1D;
+}
+
+/* Стили для ссылок в боковом меню */
+.sidebar-auth-links {
+  padding: 20px 15px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-link {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  text-align: left;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-link {
+  background-color: #4A90E2;
+}
+
+.login-link:hover {
+  background-color: #3A7BC8;
+}
+
+.admin-link {
+  background-color: #C73E1D;
+}
+
+.admin-link:hover {
+  background-color: #A32C1D;
+}
+
+.logout-link {
+  background-color: #E53935;
+}
+
+.logout-link:hover {
+  background-color: #C62828;
+}
+
+/* Контейнер для кнопок авторизации в верхней части страницы */
+.auth-buttons-container {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+/* Общие стили для кнопок авторизации */
+.auth-button {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для кнопки входа */
+.login-button {
+  background-color: #4A90E2;
+  color: white;
+}
+
+.login-button:hover {
+  background-color: #3A7BC8;
+}
+
+/* Стили для кнопки админ-панели */
+.auth-button.admin-link {
+  background-color: #C73E1D;
+  color: white;
+}
+
+.auth-button.admin-link:hover {
+  background-color: #A32C1D;
+}
+
+/* Стили для кнопки выхода */
+.logout-button {
+  background-color: #E53935;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #C62828;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper{
+    margin-top: -75px;
+    margin-left: -50px;
+  }
+}

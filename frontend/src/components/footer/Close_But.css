@@ -1,0 +1,39 @@
+/* components/CLOSEBUT.css */
+.close-but {
+    cursor: pointer;
+    width: 40px; /* Настройте размер */
+    height: 40px;
+    position: relative;
+    background-color: #fff; /* Цвет фона */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .close-but-child,
+  .close-but-item {
+    width: 20px;
+    height: 2px;
+    background-color: #000; /* Цвет линий */
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  
+  .close-but-child:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  
+  .close-but-item {
+    transform: rotate(-45deg);
+  }
+  
+  .close-but.active {
+    background-color: #f0f0f0; /* Цвет при активации */
+  }
+  
+  .close-but:hover {
+    opacity: 0.8;
+  }

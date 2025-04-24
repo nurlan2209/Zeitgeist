@@ -1,0 +1,179 @@
+{
+    "newsItems": [
+      {
+        "id": 1,
+        "category": "NEWS",
+        "title": "Investors Bullish on Nigerian Assets as Reforms Boost Confidence",
+        "author": "Emele Onu",
+        "description": "Nigeria is finally getting a favorable nod from investors, pushing stocks higher and bond yields lower as painful reforms restore confidence",
+        "image": "public/newsImg/Economic.png",
+        "featured": true,
+        "url": "https://www.google.com",
+        "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 2,
+        "category": "CULTURE",
+        "title": "Kairat Nurtas announces new album",
+        "author": "S.M.Enlik",
+        "description": "Popular artist reveals details about upcoming release",
+        "image": "/vector-7.svg",
+        "featured": true,
+        "url": "https://www.google.com",
+        "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 3,
+        "category": "BUSINESS",
+        "title": "New automobile factory opens",
+        "author": "S.M.Enlik",
+        "description": "Buy new car opportunities expand with local production",
+        "image": "/vector-8.svg",
+        "featured": false,
+        "url": "https://www.google.com",
+        "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 4,
+        "category": "TECHNOLOGY",
+        "title": "Digital transformation in Kazakhstan",
+        "author": "S.M.Enlik",
+        "description": "Kazakhstan's economy is the largest in Central Asia. Kazakhstan is rich in mineral resources: the country ranks 12th in the world in oil reserves, 14th in gas reserves; Kazakhstan has 30 % of world reserves of chrome ore and 25 % of manganese ore; there are large reserves of tungsten and molybdenum. The vast territory of the country — Kazakhstan occupies the 9th place in the world by area — provides opportunities to create a strong agro-industrial complex. However, in our time, having a strong resource base alone is not enough for competitiveness on the international level in the economy.",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm0-Yh0w09pgjyUA7qvi8wqK0w7CAOD1ZtFQ&s",
+        "featured": false,
+        "url": "https://www.google.com",
+       "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 5,
+        "category": "SPORTS",
+        "title": "National team qualifies for tournament",
+        "author": "S.M.Enlik",
+        "description": "Historic achievement for local athletes",
+        "image": "/news-vector.svg",
+        "featured": false,
+        "url": "https://www.google.com",
+        "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 6,
+        "category": "POLITICS",
+        "title": "International relations strengthen",
+        "author": "S.M.Enlik",
+        "description": "Diplomatic efforts yield positive results",
+        "image": "/vector-16.svg",
+        "featured": false,
+        "url": "https://www.google.com",
+        "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 7,
+        "category": "HEALTH",
+        "title": "New medical center inaugurated",
+        "author": "S.M.Enlik",
+        "description": "State-of-the-art facility opens to the public",
+        "image": "/news-vector.svg",
+        "featured": false,
+        "url": "https://www.google.com",
+        "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 8,
+        "category": "ENTERTAINMENT",
+        "title": "Film festival attracts global talent",
+        "author": "S.M.Enlik",
+        "description": "International directors showcase their work",
+        "image": "/vector-6.svg",
+        "featured": true,
+        "url": "https://www.google.com",
+        "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 9,
+        "category": "SCIENCE",
+        "title": "Ученые обнаружили новую экзопланету, потенциально пригодную для жизни",
+        "author": "Алексей Иванов",
+        "description": "Астрономы сообщили об открытии экзопланеты в зоне обитаемости звезды, которая может обладать атмосферой и жидкой водой.",
+        "image": "/science-space.svg",
+        "featured": true,
+        "url": "https://www.google.com",
+        "date": "2023-06-01",
+        "time": "12:00"
+      },
+      {
+        "id": 10,
+        "category": "SCIENCE",
+        "title": "Астрономы нашли экзопланету у ближайшей к нам одиночной звезды",
+        "author": "Дарья Г.",
+        "description": "Исследователи обнаружили планету в созвездии Лебедя, где в атмосфере зафиксированы возможные биосигнатуры.",
+        "image": "public/newsImg/img3.png",
+        "featured": true,
+        "url": "https://naked-science.ru/article/astronomy/barnardb-exoplanet",
+        "date": "2024-03-30",
+        "time": "14:30"
+      }
+      
+    ],
+    "collections": [
+      {
+        "id": 1,
+        "title": "Ukraine",
+        "description": "Coverage on the ongoing situation",
+        "image": "/vector-6.svg",
+        "newsIds": [1, 3, 5]
+      },
+      {
+        "id": 2,
+        "title": "Technology Trends",
+        "description": "The latest in tech innovation",
+        "image": "/vector-8.svg",
+        "newsIds": [4, 6]
+      }
+    ],
+  "newsAudio": [
+    {
+      "id": 1,
+      "category": "POLITICS",
+      "title": "Economic reforms lead to market growth",
+      "description": "A ы analysis of how recent economic reforms have positively impacted local markets and boosted financial growth",
+      "audioUrl": "../public/podcast/first.mp3",
+      "date": "March 28, 2025",
+      "duration": 180
+    },
+    {
+      "id": 2,
+      "category": "CULTURE",
+      "title": "Art exhibition draws record crowds",
+      "description": "The international art exhibition at the National Museum has broken all attendance records with its innovative displays",
+      "audioUrl": "../public/audio/art-exhibition.mp3",
+      "date": "March 25, 2025",
+      "duration": 210
+    },
+    {
+      "id": 3,
+      "category": "TECHNOLOGY",
+      "title": "New tech startup launches innovative app",
+      "description": "Local entrepreneurs unveil a groundbreaking mobile application designed to improve urban transportation",
+      "audioUrl": "/public/audio/tech-startup.mp3",
+      "date": "March 22, 2025",
+      "duration": 165
+    },
+    {
+      "id": 4,
+      "category": "HEALTH",
+      "title": "Breakthrough in medical research announced",
+      "description": "Scientists reveal promising results from clinical trials of a new treatment method that could revolutionize healthcare",
+      "audioUrl": "/public/audio/medical-breakthrough.mp3",
+      "date": "March 20, 2025",
+      "duration": 240
+    }
+  ]
+}

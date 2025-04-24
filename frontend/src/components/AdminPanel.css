@@ -1,0 +1,815 @@
+/* AdminPanel.css */
+.admin-panel {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-header {
+  background-color: #263238;
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.admin-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logout-button {
+  padding: 8px 16px;
+  background-color: #C73E1D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.logout-button:hover {
+  background-color: #A32C1D;
+}
+
+.hamburger-button {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.admin-nav {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-nav li {
+  margin: 0;
+}
+
+.admin-nav button {
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  color: #555;
+  transition: background-color 0.3s;
+}
+
+.admin-nav button:hover {
+  background-color: #e0e0e0;
+}
+
+.admin-nav button.active {
+  color: #C73E1D;
+  font-weight: 600;
+}
+
+.admin-nav button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #C73E1D;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.loading-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Overlay for sidebar */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Общие стили для компонентов управления */
+.manager-section {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.manager-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.add-button {
+  padding: 10px 16px;
+  background-color: #3C9F4A;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-button:hover {
+  background-color: #2E7D3A;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #555;
+}
+
+.data-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.edit-button {
+  background-color: #4A90E2;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #3A7BC8;
+}
+
+.delete-button {
+  background-color: #E53935;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #C62828;
+}
+
+/* Форма редактирования */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.form-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  padding: 32px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 16px;
+}
+
+.form-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #C73E1D;
+}
+
+.form-section {
+  margin-bottom: 24px;
+}
+
+.form-section h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+  border-left: 3px solid #C73E1D;
+  padding-left: 12px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 12px 16px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fafafa;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #C73E1D;
+  box-shadow: 0 0 0 3px rgba(199, 62, 29, 0.1);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group.checkbox-group label {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-group.half-width {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 16px;
+}
+
+.save-button {
+  padding: 12px 24px;
+  background-color: #3C9F4A;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.save-button:hover {
+  background-color: #2E7D3A;
+}
+
+.cancel-button {
+  padding: 12px 24px;
+  background-color: #f5f5f5;
+  color: #555;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+  background-color: #e0e0e0;
+}
+
+.back-to-site-button {
+  background-color: #2c2c2c;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+  margin-left: 240px;
+  margin-top: -28px;
+}
+
+.back-to-site-button:hover {
+  background-color: #3c3c3c;
+  color: #4a9aff;
+}
+
+.comment-text-cell {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.comment-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.comment-modal {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.comment-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.comment-modal-title {
+  margin: 0;
+  color: #333;
+}
+
+.comment-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #777;
+}
+
+.comment-modal-content {
+  margin-bottom: 20px;
+}
+
+.comment-modal-content pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 4px;
+  margin: 0;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.comment-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.comment-modal-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+}
+
+.comment-modal-delete {
+  background-color: #E53935;
+  color: white;
+}
+
+.comment-modal-delete:hover {
+  background-color: #C62828;
+}
+
+.comment-modal-cancel {
+  background-color: #f5f5f5;
+  color: #555;
+  border: 1px solid #ddd;
+}
+
+.comment-modal-cancel:hover {
+  background-color: #e0e0e0;
+}
+
+.comment-meta {
+  margin-bottom: 15px;
+  background-color: #f5f7fa;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.comment-meta-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.comment-meta-row:last-child {
+  margin-bottom: 0;
+}
+
+.comment-meta-label {
+  flex: 0 0 100px;
+  font-weight: 600;
+  color: #555;
+}
+
+.comment-meta-value {
+  flex: 1;
+  color: #333;
+}
+
+/* Mobile adaptations for max-width 768px */
+@media screen and (max-width: 768px) {
+  .admin-header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px 16px;
+  }
+
+  .admin-header h1 {
+      font-size: 1.4rem;
+  }
+
+  .admin-header-left {
+      width: 100%;
+      align-items: flex-start;
+  }
+
+  .user-info {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 10px;
+      gap: 10px;
+  }
+
+  .logout-button {
+      padding: 6px 12px;
+      font-size: 14px;
+  }
+
+  .hamburger-button {
+      display: block;
+  }
+
+  .sidebar-overlay {
+      display: block;
+  }
+
+  .admin-nav {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #f5f5f5;
+      z-index: 1000;
+      transition: right 0.3s ease;
+      border-bottom: none;
+  }
+
+  .admin-nav.open {
+      right: 0;
+  }
+
+  .admin-nav ul {
+      flex-direction: column;
+      padding: 20px;
+  }
+
+  .admin-nav li {
+      margin-bottom: 10px;
+  }
+
+  .admin-nav button {
+      padding: 12px 16px;
+      font-size: 16px;
+      width: 100%;
+      text-align: left;
+  }
+
+  .admin-nav button.active::after {
+      bottom: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      width: 3px;
+      height: 100%;
+  }
+
+  .admin-content {
+      padding: 16px;
+  }
+
+  .manager-section {
+      padding: 16px;
+  }
+
+  .manager-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+  }
+
+  .manager-header h2 {
+      font-size: 1.4rem;
+  }
+
+  .add-button {
+      padding: 8px 12px;
+      font-size: 14px;
+  }
+
+  .data-table {
+      display: block;
+      overflow-x: auto;
+  }
+
+  .data-table th,
+  .data-table td {
+      padding: 8px 12px;
+      font-size: 14px;
+  }
+
+  .action-buttons {
+      flex-direction: column;
+      gap: 6px;
+  }
+
+  .edit-button,
+  .delete-button {
+      padding: 4px 8px;
+      font-size: 12px;
+  }
+
+  .form-overlay {
+      padding: 10px;
+  }
+
+  .form-container {
+      padding: 24px;
+      max-width: 90%;
+  }
+
+  .form-header h3 {
+      font-size: 1.3rem;
+  }
+
+  .form-section h4 {
+      font-size: 1rem;
+  }
+
+  .form-group label {
+      font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+      font-size: 0.9rem;
+      padding: 10px 14px;
+  }
+
+  .form-row {
+      flex-direction: column;
+      gap: 0;
+  }
+
+  .form-group.half-width {
+      flex: none;
+      width: 100%;
+  }
+
+  .save-button,
+  .cancel-button {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+  }
+
+  .back-to-site-button {
+      margin-left: 0;
+      margin-top: 10px;
+      font-size: 14px;
+      padding: 6px 12px;
+  }
+
+  .comment-text-cell {
+      max-width: 200px;
+  }
+
+  .comment-meta-row {
+      flex-direction: column;
+      margin-bottom: 12px;
+  }
+
+  .comment-meta-label {
+      margin-bottom: 4px;
+  }
+}
+
+/* Additional mobile adaptations for max-width 480px */
+@media screen and (max-width: 480px) {
+  .admin-header {
+      padding: 10px 12px;
+  }
+
+  .admin-header h1 {
+      font-size: 1.2rem;
+  }
+
+  .logout-button {
+      padding: 4px 8px;
+      font-size: 12px;
+  }
+
+  .hamburger-button {
+      font-size: 20px;
+  }
+
+  .admin-nav {
+      width: 200px;
+      right: -200px;
+  }
+
+  .admin-nav.open {
+      right: 0;
+  }
+
+  .admin-nav button {
+      padding: 10px 12px;
+      font-size: 14px;
+  }
+
+  .admin-content {
+      padding: 12px;
+  }
+
+  .manager-section {
+      padding: 12px;
+  }
+
+  .manager-header h2 {
+      font-size: 1.2rem;
+  }
+
+  .add-button {
+      padding: 6px 10px;
+      font-size: 12px;
+  }
+
+  .data-table th,
+  .data-table td {
+      padding: 6px 8px;
+      font-size: 12px;
+  }
+
+  .form-container {
+      padding: 16px;
+      max-width: 95%;
+  }
+
+  .form-header h3 {
+      font-size: 1.2rem;
+  }
+
+  .form-group label {
+      font-size: 0.85rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+      font-size: 0.85rem;
+      padding: 8px 12px;
+  }
+
+  .save-button,
+  .cancel-button {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+  }
+
+  .comment-modal {
+      padding: 16px;
+  }
+
+  .comment-text-cell {
+      max-width: 150px;
+  }
+}
