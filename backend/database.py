@@ -5,27 +5,20 @@ from user import User
 import psycopg2
 from psycopg2 import sql
 from psycopg2.extras import RealDictCursor
-from dotenv import load_dotenv
-import bcrypt  # Добавляем bcrypt для хеширования паролей
+from  dotenv import load_dotenv
+import bcrypt
 
 load_dotenv()
 
-DB_HOST = os.getenv('DB_HOST', 'localhost')
-DB_PORT = os.getenv('DB_PORT', '5432')
-DB_NAME = os.getenv('DB_NAME', 'zeitgeist')
-DB_USER = os.getenv('DB_USER', 'postgres')
-DB_PASSWORD = os.getenv('DB_PASSWORD', '0000')
-
-# Путь до файла базы данных (не используется с PostgreSQL, оставлен для совместимости)
 DATABASE_PATH = os.path.join(os.path.dirname(__file__), 'news.db')
 
 def get_db_connection():
     conn = psycopg2.connect(
-        host=DB_HOST,
-        port=DB_PORT,
-        database=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD
+        host='localhost',
+        port='5432',
+        database='zeitgeist',
+        user='postgres',
+        password='0000'
     )
     conn.autocommit = False
     return conn
@@ -34,8 +27,7 @@ def init_db():
     """Инициализирует базу данных и создает таблицы, если их нет"""
     conn = get_db_connection()
     cursor = conn.cursor()
-    
-    # Создаем таблицу для пользователей с учетом хранения хеша пароля в формате TEXT
+
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,

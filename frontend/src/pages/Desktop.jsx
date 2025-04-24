@@ -10,7 +10,6 @@ import Component1 from "../components/Header";
 import FOOTERBUT from "../components/footer/Footer_but";
 import CLOSEBUT from "../components/footer/Close_But";
 import FrameComponent1 from "../components/Right_Block/FrameComponent1";
-import Subscribe from "../components/Subscribe";
 import RevolutionBanner from "../components/RevolutionBanner";
 import Sidebar from "../components/footer/Sidebar";
 import "./Desktop.css";
@@ -73,7 +72,6 @@ function Desktop() {
           </Swiper>
 
           <FrameComponent1 />
-          <Subscribe />
           <RevolutionBanner />
           <NewsByCategory />
         </main>
